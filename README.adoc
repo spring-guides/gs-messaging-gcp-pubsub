@@ -227,7 +227,7 @@ include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageSender]
 After the outbound channel adapter is instantiated, the name of the Google Cloud Pub/Sub topic
 ("testTopic") where messages will be published to must be set.
 
-You can use a `MessagageGateway` to write messages to a channel and publish them to Google Cloud
+You can use a `MessageGateway` to write messages to a channel and publish them to Google Cloud
 Pub/Sub.
 
 `src/main/java/hello/PubSubApplication.java`
