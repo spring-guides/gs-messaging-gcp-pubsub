@@ -171,9 +171,11 @@ command in the same process of the app, or a parent one.
 An inbound channel adapter listens to messages from a Google Cloud Pub/Sub subscription and sends
 them to a Spring channel in an application.
 
-Instantiating an inbound channel adapter requires a subscriber factory and the name of an existing
-subscription. The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured subscriber
-factory which you can simply inject as a method argument.
+Instantiating an inbound channel adapter requires a `PubSubOperations` instance and the name of an
+existing subscription.
+`PubSubOperations` is Spring's abstraction to subscribe to Google Cloud Pub/Sub topics.
+The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubOperations` instance
+which you can simply inject as a method argument.
 
 `src/main/java/hello/PubSubApplication.java`
 [source,java]
@@ -214,18 +216,16 @@ the message headers.
 An outbound channel adapter listens to new messages from a Spring channel and publishes them to a
 Google Cloud Pub/Sub topic.
 
-Instantiating an outbound channel adapter requires a `PubSubTemplate`, which is Spring's abstraction
-to publish messages to Google Cloud Pub/Sub topics. The Spring Cloud GCP Pub/Sub Boot starter
-provides an auto-configured `PubSubTemplate`.
+Instantiating an outbound channel adapter requires a `PubSubOperations` and the name of an existing
+topic.
+`PubSubOperations` is Spring's abstraction to publish messages to Google Cloud Pub/Sub topics.
+The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubOperations` instance.
 
 `src/main/java/hello/PubSubApplication.java`
 [source,java]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageSender]
 ----
-
-After the outbound channel adapter is instantiated, the name of the Google Cloud Pub/Sub topic
-("testTopic") where messages will be published to must be set.
 
 You can use a `MessageGateway` to write messages to a channel and publish them to Google Cloud
 Pub/Sub.
@@ -258,14 +258,14 @@ include::complete/src/main/java/hello/WebAppController.java[]
 == Authentication
 
 Your application must be authenticated either via the GOOGLE_APPLICATION_CREDENTIALS environment
-variable or the `spring.cloud.gcp.credentialsLocation` property.
+variable or the `spring.cloud.gcp.credentials.location` property.
 
 If you have the https://cloud.google.com/sdk/[Google Cloud SDK] installed, you can log in
 with your user account using the `gcloud auth application-default login` command.
 
 Alternatively, you can download a service account credentials file from the
 https://cloud.google.com/console[Google Cloud Console] and point the
-`spring.cloud.gcp.credentialsLocation` property in the `application.properties` file to it.
+`spring.cloud.gcp.credentials.location` property in the `application.properties` file to it.
 
 As a
 https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/resources.html[Spring Resource],
