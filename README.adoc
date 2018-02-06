@@ -3,7 +3,7 @@ tags: []
 projects: [spring-cloud]
 ---
 :spring_version: current
-:spring_boot_version: 1.5.3.RELEASE
+:spring_boot_version: 2.0.0.RC1
 :Controller: http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/stereotype/Controller.html
 :DispatcherServlet: http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
 :SpringApplication: http://docs.spring.io/spring-boot/docs/{spring_boot_version}/api/org/springframework/boot/SpringApplication.html
@@ -11,7 +11,7 @@ projects: [spring-cloud]
 :toc:
 :icons: font
 :source-highlighter: prettify
-:project_id: gs-spring-cloud-gcp
+:project_id: gs-messaging-gcp-pubsub
 This guide walks you through the process of exchanging messages between different parts of a
 program, or different programs, using
 http://docs.spring.io/spring-integration/reference/htmlsingle/#overview-endpoints-channeladapter[Spring Integration channel adapters]
@@ -45,8 +45,8 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 [[initial]]
 == Add required dependencies
 
-At the time of writing, the Spring Cloud GCP libraries are still in Alpha stage. As such, they are
-only published to Spring Snapshots Maven repository.
+At the time of writing, the Spring Cloud GCP libraries are in Beta stage.
+As such, they are published to Spring Milestones Maven repository.
 
 Add the following to your `pom.xml` file if you're using Maven:
 
@@ -55,27 +55,22 @@ Add the following to your `pom.xml` file if you're using Maven:
     ...
     <dependency>
         <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-integration-gcp</artifactId>
-        <version>1.0.0.BUILD-SNAPSHOT</version>
+        <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
     </dependency>
 
-    <!-- Recommended for object auto-configuration -->
     <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
-        <version>1.0.0.BUILD-SNAPSHOT</version>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-core</artifactId>
     </dependency>
     ...
 </dependencies>
 
-
-
 <repositories>
     ...
     <repository>
-        <id>repository.spring.snapshot</id>
-        <name>Spring Snapshot Repository</name>
-        <url>http://repo.spring.io/snapshot</url>
+        <id>spring-milestones</id>
+        <name>Spring Milestones</name>
+        <url>https://repo.spring.io/libs-milestone</url>
     </repository>
     ...
 </repositories>
@@ -87,17 +82,42 @@ Or, if you're using Gradle:
 repositories {
     ...
     maven {
-        url "http://repo.spring.io/snapshot"
+        url "http://repo.spring.io/libs-milestone"
     }
     ...
 }
 
 dependencies {
     ...
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework.cloud:spring-integration-gcp:1.0.0.BUILD-SNAPSHOT")
+    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M2")
+    compile("org.springframework.integration:spring-integration-core.5.0.1.RELEASE")
     ...
 }
+```
+
+If you're using Maven, you are also strongly encouraged to use the Spring Cloud GCP bill of materials to control the
+versions of your dependencies:
+
+```
+<properties>
+    ...
+    <spring-cloud-gcp.version>1.0.0.M2</spring-cloud-gcp.version>
+    ...
+</properties>
+
+<dependencyManagement>
+    <dependencies>
+       ...
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gcp-dependencies</artifactId>
+            <version>${spring-cloud-gcp.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        ...
+    </dependencies>
+</dependencyManagement>
 ```
 
 == Set up Google Cloud Pub/Sub environment
@@ -274,7 +294,11 @@ from places other than the file system, like a URL, classpath, etc.
 
 == Make the application executable
 
-Although it is possible to package this service as a traditional link:/understanding/WAR[WAR] file for deployment to an external application server, the simpler approach demonstrated below creates a standalone application. You package everything in a single, executable JAR file, driven by a Java `main()` method. Also, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
+Although it is possible to package this service as a traditional link:/understanding/WAR[WAR] file for deployment to an
+external application server, the simpler approach demonstrated below creates a standalone application.
+You package everything in a single, executable JAR file, driven by a Java `main()` method.
+Also, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet container as the HTTP
+runtime, instead of deploying to an external instance.
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application.adoc[]
 

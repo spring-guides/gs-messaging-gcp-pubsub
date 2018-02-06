@@ -1,9 +1,12 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://repo.spring.io/libs-milestone"
+        }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RC1")
     }
 }
 
@@ -20,7 +23,7 @@ jar {
 repositories {
     mavenCentral()
     maven {
-        url "http://repo.spring.io/snapshot"
+        url "https://repo.spring.io/libs-milestone"
     }
 }
 
@@ -28,9 +31,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.BUILD-SNAPSHOT")
-    compile("org.springframework.cloud:spring-integration-gcp:1.0.0.BUILD-SNAPSHOT")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile("org.springframework.boot:spring-boot-starter-web:2.0.0.RC1")
+    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M2")
+    compile("org.springframework.integration:spring-integration-core:5.0.1.RELEASE")
+    testCompile("org.springframework.boot:spring-boot-starter-test:2.0.0.RC1")
 }
 
