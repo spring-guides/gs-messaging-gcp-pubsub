@@ -95,8 +95,8 @@ dependencies {
 }
 ```
 
-If you're using Maven, you are also strongly encouraged to use the Spring Cloud GCP bill of materials to control the
-versions of your dependencies:
+If you're using Maven, you are also strongly encouraged to use the Spring Cloud GCP bill of
+materials to control the versions of your dependencies:
 
 ```
 <properties>
@@ -122,8 +122,8 @@ versions of your dependencies:
 
 == Set up Google Cloud Pub/Sub environment
 
-You will need a topic and a subscription to send and receive messages from Google Cloud Pub/Sub. You
-can create them in the https://console.cloud.google.com/cloudpubsub[Google Cloud Console]
+You will need a topic and a subscription to send and receive messages from Google Cloud Pub/Sub.
+You can create them in the https://console.cloud.google.com/cloudpubsub[Google Cloud Console]
 or, programatically, with the `PubSubAdmin` class.
 
 For this exercise, create a topic called "testTopic" and a subscription for that topic called
@@ -289,16 +289,17 @@ https://cloud.google.com/console[Google Cloud Console] and point the
 
 As a
 https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/resources.html[Spring Resource],
-the `spring.cloud.gcp.credentialsLocation` can also be obtained
+the `spring.cloud.gcp.credentials.location` can also be obtained
 from places other than the file system, like a URL, classpath, etc.
 
 == Make the application executable
 
-Although it is possible to package this service as a traditional link:/understanding/WAR[WAR] file for deployment to an
-external application server, the simpler approach demonstrated below creates a standalone application.
+Although it is possible to package this service as a traditional link:/understanding/WAR[WAR] file
+for deployment to an external application server, the simpler approach demonstrated below creates a
+standalone application.
 You package everything in a single, executable JAR file, driven by a Java `main()` method.
-Also, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet container as the HTTP
-runtime, instead of deploying to an external instance.
+Also, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet
+container as the HTTP runtime, instead of deploying to an external instance.
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application.adoc[]
 
