@@ -6,7 +6,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RC1")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
     }
 }
 
@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'gs-spring-cloud-gcp'
@@ -31,9 +32,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:2.0.0.RC1")
+    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M2")
-    compile("org.springframework.integration:spring-integration-core:5.0.1.RELEASE")
-    testCompile("org.springframework.boot:spring-boot-starter-test:2.0.0.RC1")
+    compile("org.springframework.integration:spring-integration-core")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
