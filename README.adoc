@@ -90,7 +90,7 @@ repositories {
 dependencies {
     ...
     compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M2")
-    compile("org.springframework.integration:spring-integration-core:5.0.1.RELEASE")
+    compile("org.springframework.integration:spring-integration-core:5.0.1")
     ...
 }
 ```
