@@ -85,7 +85,7 @@ repositories {
 
 dependencies {
     ...
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M2")
+    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M3")
     compile("org.springframework.integration:spring-integration-core")
     ...
 }
@@ -97,7 +97,7 @@ materials to control the versions of your dependencies:
 ```
 <properties>
     ...
-    <spring-cloud-gcp.version>1.0.0.M2</spring-cloud-gcp.version>
+    <spring-cloud-gcp.version>1.0.0.M3</spring-cloud-gcp.version>
     ...
 </properties>
 
