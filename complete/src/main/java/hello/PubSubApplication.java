@@ -1,11 +1,8 @@
 package hello;
 
-import java.io.IOException;
-
 import com.google.cloud.pubsub.v1.AckReplyConsumer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +17,8 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
+
+import java.io.IOException;
 
 @SpringBootApplication
 public class PubSubApplication {
