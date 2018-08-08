@@ -41,9 +41,6 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 [[initial]]
 == Add required dependencies
 
-At the time of writing, the Spring Cloud GCP libraries are in Beta stage.
-As such, they are published to Spring Milestones Maven repository.
-
 Add the following to your `pom.xml` file if you're using Maven:
 
 ```
@@ -60,32 +57,14 @@ Add the following to your `pom.xml` file if you're using Maven:
     </dependency>
     ...
 </dependencies>
-
-<repositories>
-    ...
-    <repository>
-        <id>spring-milestones</id>
-        <name>Spring Milestones</name>
-        <url>https://repo.spring.io/libs-milestone</url>
-    </repository>
-    ...
-</repositories>
 ```
 
 Or, if you're using Gradle:
 
 ```
-repositories {
-    ...
-    maven {
-        url "http://repo.spring.io/libs-milestone"
-    }
-    ...
-}
-
 dependencies {
     ...
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.M3")
+    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.RELEASE")
     compile("org.springframework.integration:spring-integration-core")
     ...
 }
@@ -97,7 +76,7 @@ materials to control the versions of your dependencies:
 ```
 <properties>
     ...
-    <spring-cloud-gcp.version>1.0.0.M3</spring-cloud-gcp.version>
+    <spring-cloud-gcp.version>1.0.0.RELEASE</spring-cloud-gcp.version>
     ...
 </properties>
 
@@ -187,10 +166,10 @@ command in the same process of the app, or a parent one.
 An inbound channel adapter listens to messages from a Google Cloud Pub/Sub subscription and sends
 them to a Spring channel in an application.
 
-Instantiating an inbound channel adapter requires a `PubSubOperations` instance and the name of an
+Instantiating an inbound channel adapter requires a `PubSubTemplate` instance and the name of an
 existing subscription.
-`PubSubOperations` is Spring's abstraction to subscribe to Google Cloud Pub/Sub topics.
-The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubOperations` instance
+`PubSubTemplate` is Spring's abstraction to subscribe to Google Cloud Pub/Sub topics.
+The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubTemplate` instance
 which you can simply inject as a method argument.
 
 `src/main/java/hello/PubSubApplication.java`
@@ -232,10 +211,10 @@ the message headers.
 An outbound channel adapter listens to new messages from a Spring channel and publishes them to a
 Google Cloud Pub/Sub topic.
 
-Instantiating an outbound channel adapter requires a `PubSubOperations` and the name of an existing
+Instantiating an outbound channel adapter requires a `PubSubTemplate` and the name of an existing
 topic.
-`PubSubOperations` is Spring's abstraction to publish messages to Google Cloud Pub/Sub topics.
-The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubOperations` instance.
+`PubSubTemplate` is Spring's abstraction to publish messages to Google Cloud Pub/Sub topics.
+The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubTemplate` instance.
 
 `src/main/java/hello/PubSubApplication.java`
 [source,java]

@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.gcp.pubsub.core.PubSubOperations;
+import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
 import org.springframework.cloud.gcp.pubsub.integration.AckMode;
 import org.springframework.cloud.gcp.pubsub.integration.inbound.PubSubInboundChannelAdapter;
 import org.springframework.cloud.gcp.pubsub.integration.outbound.PubSubMessageHandler;
@@ -43,7 +43,7 @@ public class PubSubApplication {
   @Bean
   public PubSubInboundChannelAdapter messageChannelAdapter(
       @Qualifier("pubsubInputChannel") MessageChannel inputChannel,
-      PubSubOperations pubSubTemplate) {
+      PubSubTemplate pubSubTemplate) {
     PubSubInboundChannelAdapter adapter =
         new PubSubInboundChannelAdapter(pubSubTemplate, "testSubscription");
     adapter.setOutputChannel(inputChannel);
@@ -58,7 +58,7 @@ public class PubSubApplication {
   @ServiceActivator(inputChannel = "pubsubInputChannel")
   public MessageHandler messageReceiver() {
     return message -> {
-      LOGGER.info("Message arrived! Payload: " + message.getPayload());
+      LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
       AckReplyConsumer consumer =
           (AckReplyConsumer) message.getHeaders().get(GcpPubSubHeaders.ACKNOWLEDGEMENT);
       consumer.ack();
@@ -71,7 +71,7 @@ public class PubSubApplication {
   // tag::messageSender[]
   @Bean
   @ServiceActivator(inputChannel = "pubsubOutputChannel")
-  public MessageHandler messageSender(PubSubOperations pubsubTemplate) {
+  public MessageHandler messageSender(PubSubTemplate pubsubTemplate) {
     return new PubSubMessageHandler(pubsubTemplate, "testTopic");
   }
   // end::messageSender[]
