@@ -12,7 +12,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-cloud-gcp.version>1.0.0.M3</spring-cloud-gcp.version>
-        <spring-boot-release.version>2.0.3.RELEASE</spring-boot-release.version>
+        <spring-boot-release.version>2.0.5.RELEASE</spring-boot-release.version>
     </properties>
 
     <dependencies>
