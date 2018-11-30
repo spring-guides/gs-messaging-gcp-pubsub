@@ -1,6 +1,9 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://repo.spring.io/libs-milestone"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
@@ -20,6 +23,9 @@ bootJar {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo.spring.io/libs-milestone"
+    }
 }
 
 sourceCompatibility = 1.8
