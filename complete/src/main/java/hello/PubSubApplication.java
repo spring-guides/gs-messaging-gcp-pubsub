@@ -59,9 +59,9 @@ public class PubSubApplication {
   public MessageHandler messageReceiver() {
     return message -> {
       LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
-      AckReplyConsumer consumer =
-          (AckReplyConsumer) message.getHeaders().get(GcpPubSubHeaders.ACKNOWLEDGEMENT);
-      consumer.ack();
+      BasicAcknowledgeablePubsubMessage originalMessage =
+        message.getHeaders().get(GcpPubSubHeaders.ORIGINAL_MESSAGE, BasicAcknowledgeablePubsubMessage.class);
+      originalMessage.ack();
     };
   }
   // end::messageReceiver[]
