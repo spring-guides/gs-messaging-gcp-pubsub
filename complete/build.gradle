@@ -27,7 +27,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.0.0.RELEASE")
+    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.1.3.RELEASE")
     compile("org.springframework.integration:spring-integration-core")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
