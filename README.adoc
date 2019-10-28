@@ -203,8 +203,8 @@ channel method name. Whenever a new message arrives to that channel, it is proce
 `MessageHandler`.
 
 In this example, the message is processed simply by logging its body and acknowledging it. In manual
-acknowledgement, a message is acknowledged using the `AckReplyConsumer` object, which is sent in
-the message headers.
+acknowledgement, a message is acknowledged using the `BasicAcknowledgeablePubsubMessage` object, which
+is attached to the `Message` headers and can be extracted using the `GcpPubSubHeaders.ORIGINAL_MESSAGE` key.
 
 == Create an outbound channel adapter
 
