@@ -17,7 +17,7 @@ public class WebAppController {
 
   @PostMapping("/publishMessage")
   public RedirectView publishMessage(@RequestParam("message") String message) {
-    messagingGateway.sendToPubsub(message);
-    return new RedirectView("/");
+	messagingGateway.sendToPubsub(message);
+	return new RedirectView("/");
   }
 }

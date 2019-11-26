@@ -28,7 +28,7 @@ public class PubSubApplication {
   private static final Log LOGGER = LogFactory.getLog(PubSubApplication.class);
 
   public static void main(String[] args) throws IOException {
-    SpringApplication.run(PubSubApplication.class, args);
+	SpringApplication.run(PubSubApplication.class, args);
   }
 
   // Inbound channel adapter.
@@ -36,21 +36,21 @@ public class PubSubApplication {
   // tag::pubsubInputChannel[]
   @Bean
   public MessageChannel pubsubInputChannel() {
-    return new DirectChannel();
+	return new DirectChannel();
   }
   // end::pubsubInputChannel[]
 
   // tag::messageChannelAdapter[]
   @Bean
   public PubSubInboundChannelAdapter messageChannelAdapter(
-      @Qualifier("pubsubInputChannel") MessageChannel inputChannel,
-      PubSubTemplate pubSubTemplate) {
-    PubSubInboundChannelAdapter adapter =
-        new PubSubInboundChannelAdapter(pubSubTemplate, "testSubscription");
-    adapter.setOutputChannel(inputChannel);
-    adapter.setAckMode(AckMode.MANUAL);
+	  @Qualifier("pubsubInputChannel") MessageChannel inputChannel,
+	  PubSubTemplate pubSubTemplate) {
+	PubSubInboundChannelAdapter adapter =
+		new PubSubInboundChannelAdapter(pubSubTemplate, "testSubscription");
+	adapter.setOutputChannel(inputChannel);
+	adapter.setAckMode(AckMode.MANUAL);
 
-    return adapter;
+	return adapter;
   }
   // end::messageChannelAdapter[]
 
@@ -58,12 +58,12 @@ public class PubSubApplication {
   @Bean
   @ServiceActivator(inputChannel = "pubsubInputChannel")
   public MessageHandler messageReceiver() {
-    return message -> {
-      LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
-      BasicAcknowledgeablePubsubMessage originalMessage =
-        message.getHeaders().get(GcpPubSubHeaders.ORIGINAL_MESSAGE, BasicAcknowledgeablePubsubMessage.class);
-      originalMessage.ack();
-    };
+	return message -> {
+	  LOGGER.info("Message arrived! Payload: " + new String((byte[]) message.getPayload()));
+	  BasicAcknowledgeablePubsubMessage originalMessage =
+		message.getHeaders().get(GcpPubSubHeaders.ORIGINAL_MESSAGE, BasicAcknowledgeablePubsubMessage.class);
+	  originalMessage.ack();
+	};
   }
   // end::messageReceiver[]
 
@@ -73,7 +73,7 @@ public class PubSubApplication {
   @Bean
   @ServiceActivator(inputChannel = "pubsubOutputChannel")
   public MessageHandler messageSender(PubSubTemplate pubsubTemplate) {
-    return new PubSubMessageHandler(pubsubTemplate, "testTopic");
+	return new PubSubMessageHandler(pubsubTemplate, "testTopic");
   }
   // end::messageSender[]
 
@@ -81,7 +81,7 @@ public class PubSubApplication {
   @MessagingGateway(defaultRequestChannel = "pubsubOutputChannel")
   public interface PubsubOutboundGateway {
 
-    void sendToPubsub(String text);
+	void sendToPubsub(String text);
   }
   // end::messageGateway[]
 }

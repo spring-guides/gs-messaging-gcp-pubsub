@@ -173,7 +173,7 @@ The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubTem
 which you can simply inject as a method argument.
 
 `src/main/java/hello/PubSubApplication.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageChannelAdapter]
 ----
@@ -185,7 +185,7 @@ After the channel adapter is instantiated, an output channel where the adapter s
 messages to must be configured.
 
 `src/main/java/hello/PubSubApplication.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=pubsubInputChannel]
 ----
@@ -193,7 +193,7 @@ include::/complete/src/main/java/hello/PubSubApplication.java[tag=pubsubInputCha
 Attached to an inbound channel is a service activator which is used to process incoming messages.
 
 `src/main/java/hello/PubSubApplication.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageReceiver]
 ----
@@ -217,7 +217,7 @@ topic.
 The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubTemplate` instance.
 
 `src/main/java/hello/PubSubApplication.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageSender]
 ----
@@ -226,7 +226,7 @@ You can use a `MessageGateway` to write messages to a channel and publish them t
 Pub/Sub.
 
 `src/main/java/hello/PubSubApplication.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageGateway]
 ----
@@ -235,7 +235,7 @@ From this code, Spring auto-generates an object that can then be autowired into 
 the application.
 
 `src/main/java/hello/WebAppController.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::/complete/src/main/java/hello/WebAppController.java[tag=autowireGateway]
 ----
@@ -245,7 +245,7 @@ include::/complete/src/main/java/hello/WebAppController.java[tag=autowireGateway
 Add logic to your controller that lets you write to a Spring channel:
 
 `src/main/java/hello/WebAppController.java`
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/hello/WebAppController.java[]
 ----
