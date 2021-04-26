@@ -23,18 +23,18 @@ itself and processes those messages.
 == What you'll need
 
 :java_version: 1.8
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/prereq_editor_jdk_buildtools.adoc[]
 * https://cloud.google.com/pubsub/docs/quickstart-console[A Google Cloud Platform project with billing and Pub/Sub enabled]
 * https://cloud.google.com/sdk/[Google Cloud SDK]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/how_to_complete_this_guide.adoc[]
 
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/hide-show-gradle.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/hide-show-maven.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/hide-show-sts.adoc[]
 
 
 
@@ -154,7 +154,7 @@ configuration. The Spring Cloud GCP Core Boot starter is bundled with the Spring
 Pub/Sub Boot starter.
 
 The GCP project ID is auto-configured from the `GOOGLE_CLOUD_PROJECT` environment variable, among
-https://github.com/GoogleCloudPlatform/google-cloud-java/blob/master/google-cloud-core/src/main/java/com/google/cloud/ServiceOptions.java#L287[several other sources].
+https://github.com/GoogleCloudPlatform/google-cloud-java/blob/main/google-cloud-core/src/main/java/com/google/cloud/ServiceOptions.java#L287[several other sources].
 The OAuth2 credentials are auto-configured from the
 https://developers.google.com/identity/protocols/application-default-credentials[GOOGLE_APPLICATION_CREDENTIALS]
 environment variable. If the https://cloud.google.com/sdk/[Google Cloud SDK] is installed, this
@@ -276,11 +276,11 @@ You package everything in a single, executable JAR file, driven by a Java `main(
 Also, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet
 container as the HTTP runtime, instead of deploying to an external instance.
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/spring-boot-application.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_subhead.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_subhead.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_with_both.adoc[]
 
 
 Logging output is displayed. The service should be up and running within a few seconds.
@@ -300,4 +300,4 @@ Integration GCP Pub/Sub channel adapters!
 
 
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/footer.adoc[]
