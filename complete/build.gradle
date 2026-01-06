@@ -1,21 +1,14 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE")
-    }
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
 bootJar {
-    baseName = 'gs-spring-cloud-gcp'
-    version =  '0.1.0'
+    archiveBaseName = 'gs-spring-cloud-gcp'
+    archiveVersion = '0.1.0'
 }
 
 repositories {
@@ -26,8 +19,8 @@ sourceCompatibility = 17
 targetCompatibility = 17
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.2.5.RELEASE")
-    compile("org.springframework.integration:spring-integration-core")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.2.5.RELEASE'
+    implementation 'org.springframework.integration:spring-integration-core'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
