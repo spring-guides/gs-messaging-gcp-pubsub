@@ -9,7 +9,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-boot-release.version>2.3.4.RELEASE</spring-boot-release.version>
+        <spring-boot-release.version>3.5.8</spring-boot-release.version>
     </properties>
 
     <dependencies>

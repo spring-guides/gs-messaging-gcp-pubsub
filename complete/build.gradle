@@ -2,8 +2,8 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'idea'
-    id 'org.springframework.boot' version '2.3.4.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'org.springframework.boot' version '3.5.8'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 bootJar {
@@ -20,7 +20,8 @@ targetCompatibility = 17
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.2.5.RELEASE'
+    implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:5.9.0')
+    implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
     implementation 'org.springframework.integration:spring-integration-core'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

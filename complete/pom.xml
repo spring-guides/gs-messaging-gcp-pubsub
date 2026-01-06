@@ -11,13 +11,13 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <spring-cloud-gcp.version>1.2.5.RELEASE</spring-cloud-gcp.version>
-        <spring-boot-release.version>2.3.4.RELEASE</spring-boot-release.version>
+        <spring-cloud-gcp.version>5.9.0</spring-cloud-gcp.version>
+        <spring-boot-release.version>3.5.8</spring-boot-release.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
+            <groupId>com.google.cloud</groupId>
             <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
         </dependency>
         <dependency>
@@ -33,7 +33,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.google.cloud</groupId>
                 <artifactId>spring-cloud-gcp-dependencies</artifactId>
                 <version>${spring-cloud-gcp.version}</version>
                 <type>pom</type>
