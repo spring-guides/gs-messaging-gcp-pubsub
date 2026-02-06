@@ -4,13 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-spring-cloud-gcp</artifactId>
-    <version>0.1.0</version>
+    <artifactId>gs-messaging-gcp-pubsub</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-    <properties>
-        <java.version>17</java.version>
-        <spring-boot-release.version>3.5.8</spring-boot-release.version>
-    </properties>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.8</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -18,18 +19,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot-release.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
