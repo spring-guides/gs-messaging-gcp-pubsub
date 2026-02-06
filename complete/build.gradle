@@ -15,8 +15,10 @@ java {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+	// tag::dependencies[]
     implementation platform('com.google.cloud:spring-cloud-gcp-dependencies:5.9.0')
     implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
     implementation 'org.springframework.integration:spring-integration-core'
+	// end::dependencies[]
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

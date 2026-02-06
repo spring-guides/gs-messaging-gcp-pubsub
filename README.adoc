@@ -43,63 +43,31 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 
 Add the following to your `pom.xml` file if you're using Maven:
 
-```
-<dependencies>
-    ...
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
-    </dependency>
+[source,xml,indent=0]
+----
+include::complete/pom.xml[tag=dependencies]
+----
 
-    <dependency>
-        <groupId>org.springframework.integration</groupId>
-        <artifactId>spring-integration-core</artifactId>
-    </dependency>
-    ...
-</dependencies>
-```
+You also need to declare the Spring Cloud GCP bill of materials to control the versions of your dependencies:
+
+[source,xml,indent=0]
+----
+include::complete/pom.xml[tag=bom]
+----
+
 
 Or, if you're using Gradle:
 
-```
-dependencies {
-    ...
-    compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub:1.2.5.RELEASE")
-    compile("org.springframework.integration:spring-integration-core")
-    ...
-}
-```
-
-If you're using Maven, you are also strongly encouraged to use the Spring Cloud GCP bill of
-materials to control the versions of your dependencies:
-
-```
-<properties>
-    ...
-    <spring-cloud-gcp.version>1.2.5.RELEASE</spring-cloud-gcp.version>
-    ...
-</properties>
-
-<dependencyManagement>
-    <dependencies>
-       ...
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-gcp-dependencies</artifactId>
-            <version>${spring-cloud-gcp.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        ...
-    </dependencies>
-</dependencyManagement>
-```
+[source,groovy,indent=0]
+----
+include::complete/build.gradle[tag=dependencies]
+----
 
 == Set up Google Cloud Pub/Sub environment
 
 You will need a topic and a subscription to send and receive messages from Google Cloud Pub/Sub.
 You can create them in the https://console.cloud.google.com/cloudpubsub[Google Cloud Console]
-or, programatically, with the `PubSubAdmin` class.
+or, programmatically, with the `PubSubAdmin` class.
 
 For this exercise, create a topic called "testTopic" and a subscription for that topic called
 "testSubscription".
@@ -139,13 +107,13 @@ We're still missing two files for HTML and properties.
 `src/main/resources/static/index.html`
 [source, java]
 ----
-include::/complete/src/main/resources/static/index.html[]
+include::complete/src/main/resources/static/index.html[]
 ----
 
 `src/main/resources/application.properties`
 [source, java]
 ----
-include::/complete/src/main/resources/application.properties[]
+include::complete/src/main/resources/application.properties[]
 ----
 
 The Spring Cloud GCP Core Boot starter can auto-configure these two properties and make them
@@ -175,7 +143,7 @@ which you can simply inject as a method argument.
 `src/main/java/hello/PubSubApplication.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageChannelAdapter]
+include::complete/src/main/java/hello/PubSubApplication.java[tag=messageChannelAdapter]
 ----
 
 The message acknowledgement mode is set in the adapter to automatic, by default. This behaviour
@@ -187,7 +155,7 @@ messages to must be configured.
 `src/main/java/hello/PubSubApplication.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/PubSubApplication.java[tag=pubsubInputChannel]
+include::complete/src/main/java/hello/PubSubApplication.java[tag=pubsubInputChannel]
 ----
 
 Attached to an inbound channel is a service activator which is used to process incoming messages.
@@ -195,7 +163,7 @@ Attached to an inbound channel is a service activator which is used to process i
 `src/main/java/hello/PubSubApplication.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageReceiver]
+include::complete/src/main/java/hello/PubSubApplication.java[tag=messageReceiver]
 ----
 
 The `ServiceActivator` input channel name (e.g., `"pubsubInputChannel"`) must match the input
@@ -219,7 +187,7 @@ The Spring Cloud GCP Pub/Sub Boot starter provides an auto-configured `PubSubTem
 `src/main/java/hello/PubSubApplication.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageSender]
+include::complete/src/main/java/hello/PubSubApplication.java[tag=messageSender]
 ----
 
 You can use a `MessageGateway` to write messages to a channel and publish them to Google Cloud
@@ -228,7 +196,7 @@ Pub/Sub.
 `src/main/java/hello/PubSubApplication.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/PubSubApplication.java[tag=messageGateway]
+include::complete/src/main/java/hello/PubSubApplication.java[tag=messageGateway]
 ----
 
 From this code, Spring auto-generates an object that can then be autowired into a private field in
@@ -237,7 +205,7 @@ the application.
 `src/main/java/hello/WebAppController.java`
 [source,java,tabsize=2]
 ----
-include::/complete/src/main/java/hello/WebAppController.java[tag=autowireGateway]
+include::complete/src/main/java/hello/WebAppController.java[tag=autowireGateway]
 ----
 
 == Add controller logic
