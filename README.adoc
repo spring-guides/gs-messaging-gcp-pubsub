@@ -1,16 +1,16 @@
 :spring_version: current
 :spring_boot_version: 3.5.10
-:Controller: http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/stereotype/Controller.html
-:DispatcherServlet: http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
-:SpringApplication: http://docs.spring.io/spring-boot/docs/{spring_boot_version}/api/org/springframework/boot/SpringApplication.html
-:ResponseBody: http://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
+:Controller: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/stereotype/Controller.html
+:DispatcherServlet: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
+:SpringApplication: https://docs.spring.io/spring-boot/{spring_boot_version}/api/java/org/springframework/boot/SpringApplication.html
+:ResponseBody: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
 :toc:
 :icons: font
 :source-highlighter: prettify
 :project_id: gs-messaging-gcp-pubsub
 This guide walks you through the process of exchanging messages between different parts of a
 program, or different programs, using
-http://docs.spring.io/spring-integration/reference/htmlsingle/#overview-endpoints-channeladapter[Spring Integration channel adapters]
+https://docs.spring.io/spring-integration/reference/channel-adapter.html[Spring Integration channel adapters]
 and
 https://cloud.google.com/pubsub/[Google Cloud Pub/Sub] as the underlying message exchange mechanism.
 
